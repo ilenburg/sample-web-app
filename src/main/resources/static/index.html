@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="financeApp">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+    <script type="text/javascript" src="service.js"></script>
+</head>
+
+<body>
+    <div ng-controller="financeController" class="wrapper">
+        <div class="table">
+            <div class="row header blue">
+                <div class="cell">
+                    Data do lançamento
+                </div>
+                <div class="cell">
+                    Descrição
+                </div>
+                <div class="cell">
+                    Número
+                </div>
+                <div class="cell">
+                    Situação
+                </div>
+                <div class="cell">
+                    Data de confirmação
+                </div>
+                <div class="cell">
+                    Dados bancários
+                </div>
+                <div class="cell">
+                    Valor final
+                </div>
+            </div>
+
+            <div class="row" ng-repeat="lancamento in lancamentos">
+                <div class="cell">
+                    {{lancamento.dataLancamentoContaCorrenteCliente}}
+                </div>
+                <div class="cell capitalize">
+                    {{lancamento.lancamentoContaCorrenteCliente.nomeTipoOperacao}}
+                </div>
+                <div class="cell">
+                    {{lancamento.lancamentoContaCorrenteCliente.numeroRemessaBanco}}
+                </div>
+                <div class="cell">
+                    {{lancamento.lancamentoContaCorrenteCliente.nomeSituacaoRemessa}}
+                </div>
+                <div class="cell">
+                    {{lancamento.dataEfetivaLancamento}}
+                </div>
+                <div class="cell">
+                    {{lancamento.nomeBanco}} Ag {{lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroAgencia}} CC {{lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroContaCorrente}}
+                </div>
+                <div class="cell">
+                    R$ {{lancamento.valorLancamentoRemessa | number : 2}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
